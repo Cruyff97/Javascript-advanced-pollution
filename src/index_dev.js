@@ -25,43 +25,53 @@ window.onload = function () {
       console.log(json);
       let vote=document.querySelector('#vote');
       vote.textContent='';
+      let gpsDiv= document.querySelector('#gpsDiv');
+      let voteDiv= document.querySelector('#divVote');
+      voteDiv.style.border='';
+      voteDiv.style.border= '1px solid white';
       /*results*/
       if (json.data.aqi <= 50) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= 'green';
         vote.textContent='Good'
         quality.textContent =
           "Air quality is considered satisfactory, and air pollution poses little or no risk";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+       
       } else if (json.data.aqi <= 100) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= "#ffde33";
         vote.textContent='Moderate'
         quality.textContent =
           "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+        
       } else if (json.data.aqi <= 150) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= '#ff9933';
         vote.textContent='Unhealthy for Sensitive Groups';
         quality.textContent =
           "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+        
       } else if (json.data.aqi <= 200) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= '#cc0033';
         vote.textContent='Unhealthy';
         quality.textContent =
           "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+       
       } else if (json.data.aqi <= 300) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= '#660099';
         vote.textContent='Very Unhealthy';
         quality.textContent =
           "Health warnings of emergency conditions. The entire population is more likely to be affected.";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+        
       } else if (json.data.aqi > 300) {
+        gpsDiv.style.backgroundColor= '';
+        gpsDiv.style.backgroundColor= '#7e0023';
         vote.textContent='Hazardous';
         quality.textContent =
           "	Health alert: everyone may experience more serious health effects.";
-        const currentDiv = document.getElementById("gps");
-        currentDiv.appendChild(quality);
+        
       }
       let city = document.getElementById("mycity");
       let cities = `${json.data.city}`;
@@ -109,7 +119,7 @@ window.onload = function () {
         "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
     } else if (json.data.aqi <= 150) {
       backgroundRes.style.backgroundColor = "";
-      backgroundRes.style.backgroundColor = "#ff9933;";
+      backgroundRes.style.backgroundColor = "#ff9933";
       console.log(cityqual);
       let result = document.querySelector(".result");
       console.log(result);
@@ -149,27 +159,53 @@ window.onload = function () {
     const latlonqual = document.getElementById("qual");
     latlonqual.textContent = "";
     const backgroundRes2= document.querySelector('div#latlonres.result');
+    let divlatlonvote= document.querySelector('#divlatlonvote');
+    let latlonvoteh3= document.querySelector('#latlonvoteh3');
     if (json2.data.aqi <= 50) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Good';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor = "green";
       latlonqual.textContent =
         "Air quality is considered satisfactory, and air pollution poses little or no risk";
     } else if (json2.data.aqi <= 100) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Moderate';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor = "#ffde33";
       latlonqual.textContent =
         "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
     } else if (json2.data.aqi <= 150) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Unealthy for Sensitive People';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor ="#ff9933";
       latlonqual.textContent =
         "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
     } else if (json2.data.aqi <= 200) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Unealthy';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor ="#cc0033";
       latlonqual.textContent =
         "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
     } else if (json2.data.aqi <= 300) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Very Unealthy';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor ="#660099";
       latlonqual.textContent =
         "Health warnings of emergency conditions. The entire population is more likely to be affected.";
     } else if (json2.data.aqi > 300) {
+      latlonvoteh3.textContent='';
+      latlonvoteh3.textContent='Hazardous';
+      divlatlonvote.style.border='';
+      divlatlonvote.style.border=' 0.5px solid white'
       backgroundRes2.style.backgroundColor ="#7e0023";
       latlonqual.textContent =
         "	Health alert: everyone may experience more serious health effects.";

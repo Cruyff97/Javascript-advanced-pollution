@@ -113,7 +113,7 @@
           role="tabpanel"
           aria-labelledby="city-tab"
         >
-          <span class="cityreq"> How polluted is the air in my city? </span>
+          <h3 id='cityh3' class="cityreq"> How polluted is the air in my city? </h3>
           <form id="formcity" action="">
               <input
                   type="text"
@@ -157,6 +157,9 @@
               <button id="submitlatlon" type="submit" value="">search </button>
             </div>
             <div id= 'latlonres' class="result">
+              <div id="divlatlonvote">
+                <h3 id="latlonvoteh3"></h3>
+              </div>
               <h4 id="qual"></h4>
             </div>
           </div>
@@ -167,16 +170,21 @@
           role="tabpanel"
           aria-labelledby="gps-tab"
         >
-          <h2>Get AQI from your GPS position:</h2>
-          <button id="getgps">search</button>
-          <p id="lon">Longitude:</p>
-          <br />
-          <p id="lat">Latitude:</p>
-          <div>
-            <h3 id="vote"></h3>  
-            <h3 id="airquality"></h3>
-            <h4 id="mycity"></h4>
-            <h4 id="aqi"></h4>
+          <h3 id="gpsh3">Get AQI from your GPS position:</h2>
+            <div id="gpsDivv">
+
+              <button id="getgps">search</button>
+              <p id="lon">Longitude:</p>
+              <br />
+              <p id="lat">Latitude:</p>
+              <div id="gpsDiv">
+                <div id="divVote">
+                  <h3 id="vote"></h3>  
+                </div>
+                <h3 id="airquality"></h3>
+                <h4 id="mycity"></h4>
+                <h4 id="aqi"></h4>
+              </div>
           </div>
         </div>
       </div>
