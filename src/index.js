@@ -3,4 +3,5 @@ async function callLambdaFunction() {
     const data = await response.json()
   } 
   
-  callLambdaFunction()
+  callLambdaFunction();
+  

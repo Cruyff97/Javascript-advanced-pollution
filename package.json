@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/Cruyff97/Javascript-advanced-pollution#readme",
   "devDependencies": {
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.4.0",
     "dotenv-webpack": "^7.0.2",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^2.4.2",
+    "style-loader": "^3.3.0",
     "webpack": "^5.26.3",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

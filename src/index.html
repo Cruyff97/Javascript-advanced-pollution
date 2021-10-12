@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Air Pollution</title>
     <!-- style and script resources -->
-    <link rel="stylesheet" href="./style.css" media="all" />
+    <link rel="stylesheet" href="./assets/css/style.css" media="all" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
@@ -121,11 +121,13 @@
                   name="city"
                   id="city"
                 />
-                <button class="citySearch" type="button"></button>
+                <button class="citySearch" type="button">search</button>
         </form>
-        <h3 id="cityquality"></h3>
+        <div class="result">
+          <h3 id="cityquality"></h3>
           <h4 id="minecity"></h4>
           <h4 id="aqicity"></h4>
+        </div>
         </div>
 
         <div
@@ -137,7 +139,7 @@
           <div id="geolocalization">
             <div id="inputone">
               <input
-                type="number"
+                type="text"
                 name="latitude"
                 id="latitude"
                 placeholder="insert your latitude here"
@@ -145,16 +147,18 @@
             </div>
             <div id="inputtwo">
               <input
-                type="number"
+                type="text"
                 name="longitude"
                 id="longitude"
                 placeholder="insert your longitude here"
               />
             </div>
             <div id="inputthree">
-              <input id="submitlatlon" type="submit" value="" />
+              <button id="submitlatlon" type="submit" value="">search </button>
             </div>
-            <h4 id="qual"></h4>
+            <div id= 'latlonres' class="result">
+              <h4 id="qual"></h4>
+            </div>
           </div>
         </div>
         <div
@@ -164,13 +168,16 @@
           aria-labelledby="gps-tab"
         >
           <h2>Get AQI from your GPS position:</h2>
-          <button onclick="getgps()" id="getgps">search</button>
+          <button id="getgps">search</button>
           <p id="lon">Longitude:</p>
           <br />
           <p id="lat">Latitude:</p>
-          <h3 id="airquality"></h3>
-          <h4 id="mycity"></h4>
-          <h4 id="aqi"></h4>
+          <div>
+            <h3 id="vote"></h3>  
+            <h3 id="airquality"></h3>
+            <h4 id="mycity"></h4>
+            <h4 id="aqi"></h4>
+          </div>
         </div>
       </div>
     </div>

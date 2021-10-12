@@ -5,6 +5,8 @@
   // Modulo di NodeJS che dà la possibilità di interagire con file e cartelle locali
   const path = require('path')
 
+  const CopyPlugin = require("copy-webpack-plugin");
+
   // Per permettere a WebPack di utilizzare gli argomenti il modulo deve essere una funzione (normalmente è un oggetto)
   module.exports = (env, argv) => {
     // FONDAMENTALE! Definiamo il file da utilizzare in base all'ambiente
@@ -34,7 +36,13 @@
           template: path.resolve(__dirname, './src/index.html'),
         }),
         // Qui dotenv-webpack viene inizializzato
-        new Dotenv()
+        new Dotenv(),
+
+        new CopyPlugin({
+          patterns: [
+            { from: "src/assets", to: "assets" },
+          ],
+        }),
       ]
     }
 };
