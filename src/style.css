@@ -1,0 +1,52 @@
+body {
+    align-content: center;
+    background-image: url(/src/img/ho-chi-minh-city-ge6e484d15_1920.png);
+    background-size: cover;
+}
+
+.custom {
+    width: 180px !important;
+    justify-content: center;
+}
+.main {
+    border-radius: 10px;
+    box-shadow: 5px 14px 7px 3px #8888;
+    max-width: 700px;
+    height: 100vh;
+    background-color: #EADEB8;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+    color: #A09F57;
+}
+.cityreq {
+    display: block;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #C56824;
+}
+#geolocalization {
+    display: flex;
+    flex-direction:column;
+    margin: 40px;
+}
+#inputone {
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+}
+#inputtwo {
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+}
+#inputthree {
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+}
+.nav-pills  .nav-link.active {
+    border-radius: 10px;
+    background-color: #A09F57 !important;
+}

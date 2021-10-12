@@ -24,7 +24,8 @@
       // Configurazione di un plugin, necessario per sveltire il processo di sviluppo vedi asterischi nello snippet successivo **
       devServer: {
         contentBase: './build',
-        open: true
+        open: true,
+        hot:true
       },
       plugins: [
         // Plugin che prende un template e lo personalizza, completandolo con scripts ed eventuali stili
