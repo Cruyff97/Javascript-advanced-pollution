@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Air Pollution</title>
     <!-- style and script resources -->
-    <link rel="stylesheet" href="./assets/css/style.css" media="all" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
       integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/assets/css/style.css" media="all" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js"
       integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u"
@@ -33,6 +33,9 @@
       name="robots"
       content="index, follow, max-snippet: -1, max-image-preview:large, max-video-preview: -1"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="canonical" href="" />
     <!--open graph meta tags for social sites and search engines-->
     <meta property="og:locale" content="en_US" />
@@ -61,6 +64,11 @@
 
   <body>
     <h1>Air Pollution</h1>
+    <h3 id="discover">
+      Discover Air Quality Index around the world. <br>
+Use one of the following search methods.
+    </h3>
+    
     <div class="main">
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item">
@@ -121,12 +129,17 @@
                   name="city"
                   id="city"
                 />
+                <p class="pError"></p>
                 <button class="citySearch" type="button">search</button>
         </form>
         <div class="result">
-          <h3 id="cityquality"></h3>
-          <h4 id="minecity"></h4>
-          <h4 id="aqicity"></h4>
+          <div id="citySearchDiv">  
+            <h3 id="citySearchvoteh3"></h3>
+          </div>
+          <h3 id="aqicit"></h3>
+            <h3 id="cityquality"></h3>
+            <h4 id="minecity"></h4>
+            <h4 id="aqicity"></h4>
         </div>
         </div>
 
@@ -137,6 +150,7 @@
           aria-labelledby="geolocal-tab"
         >
           <div id="geolocalization">
+            <p id="latp">Latitude</p>
             <div id="inputone">
               <input
                 type="text"
@@ -145,6 +159,8 @@
                 placeholder="insert your latitude here"
               />
             </div>
+            <div id="progressbar"></div>
+            <p id="lonp">longitude</p>
             <div id="inputtwo">
               <input
                 type="text"
@@ -153,6 +169,7 @@
                 placeholder="insert your longitude here"
               />
             </div>
+            <p id="errorgeo"></p>
             <div id="inputthree">
               <button id="submitlatlon" type="submit" value="">search </button>
             </div>
@@ -173,10 +190,7 @@
           <h3 id="gpsh3">Get AQI from your GPS position:</h2>
             <div id="gpsDivv">
 
-              <button id="getgps">search</button>
-              <p id="lon">Longitude:</p>
-              <br />
-              <p id="lat">Latitude:</p>
+              <button id="getgps">search my position</button>
               <div id="gpsDiv">
                 <div id="divVote">
                   <h3 id="vote"></h3>  

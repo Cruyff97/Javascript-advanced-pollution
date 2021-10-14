@@ -1,22 +1,26 @@
-/*GPS*/
+/*progressbar*/
 
+
+/*catch errors*/
+
+/*GPS*/
+import { Circle } from 'progressbar.js';
 window.onload = function () {
+ 
+
   let btngps = document.querySelector("button#getgps");
   console.log(btngps);
   btngps.addEventListener("click", () => getgps());
   function getgps() {
+    
     navigator.geolocation.getCurrentPosition(async (position) => {
       var crd = position.coords;
 
       const lat = await `${crd.latitude}`;
       const lon = await ` ${crd.longitude}`;
-      const lati = document.getElementById("lat");
-      lati.textContent = "Latitude:";
+      
 
-      lati.textContent += lat;
-      const longi = document.getElementById("lon");
-      longi.textContent = "Longitude:";
-      longi.textContent += lon;
+
       const api_url = `https://api.waqi.info/feed/geo:${crd.latitude};${crd.longitude}/?token=${process.env.API_KEY}`;
       const response = await fetch(api_url);
       const json = await response.json();
@@ -88,7 +92,7 @@ window.onload = function () {
   console.log(citySearchh);
   citySearchh.addEventListener("click", () => citySearch());
   async function citySearch() {
-    const inputSearch = document.querySelector("input#city");
+    let inputSearch = document.querySelector("input#city");
     console.log(inputSearch.value);
     console.log(citySearchh);
 
@@ -98,26 +102,70 @@ window.onload = function () {
     const city_url = url1 + city + token;
     console.log(city_url);
     const response = await fetch(city_url);
-    const json = await response.json();
+    const json3 = await response.json();
     const cityqual = document.getElementById("cityquality");
     cityqual.textContent = "";
-    console.log(json);
+    console.log(json3);
     const backgroundRes = document.querySelector(".result");
+    const citySearchvoteh3 = document.querySelector('#citySearchvoteh3');
+    const citySearchDiv = document.querySelector('#citySearchDiv');
+    const aqiStat= document.querySelector('#aqicit');
+    console.log(aqiStat);
+    aqiStat.textContent='';
+    inputSearch.style.borderColor= '';
+    let errorcity = document.querySelector('.pError');
+    errorcity.innerText='';
+    let minecity = document.querySelector("#minecity");
+    minecity.textContent='';
+    backgroundRes.style.backgroundColor='';
+    
+    if (json3.status!== 'error') {aqiStat.textContent= 'AQI:' + ' ' + await `${json3.data.aqi}`;
+    let minecity = document.querySelector("#minecity");
+    console.log(minecity);
+    let cities = await `${json3.data.city}`;
+    console.log(cities);
+    minecity.textContent = await `${json3.data.city.name}`;
 
-    if (json.data.aqi <= 50) {
+  }
+  if(json3.status== 'error') {
+    console.log('cc');
+    let formcity= document.querySelector('#formcity');
+    let errorcity = document.querySelector('.pError');
+    errorcity.innerText='City not found';
+    
+  formcity.insertBefore(errorcity,citySearchh);
+   
+
+   inputSearch.style.borderColor= 'red'; 
+    citySearchvoteh3.textContent='';
+    citySearchDiv.style.border='';
+  }
+    if (json3.data.aqi <= 50) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Good';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       const backgroundRes = document.querySelector(".result");
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "green";
       console.log(cityqual);
       cityqual.textContent =
         "Air quality is considered satisfactory, and air pollution poses little or no risk";
-    } else if (json.data.aqi <= 100) {
+    } else if (json3.data.aqi <= 100) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Moderate';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "#ffde33";
       console.log(cityqual);
       cityqual.textContent =
         "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-    } else if (json.data.aqi <= 150) {
+    } else if (json3.data.aqi <= 150) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Unealthy for Sensitive Group';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "#ff9933";
       console.log(cityqual);
@@ -125,22 +173,34 @@ window.onload = function () {
       console.log(result);
       cityqual.textContent =
         "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-    } else if (json.data.aqi <= 200) {
+    } else if (json3.data.aqi <= 200) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Unealthy';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "#cc0033";
       cityqual.textContent =
         "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
-    } else if (json.data.aqi <= 300) {
+    } else if (json3.data.aqi <= 300) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Very Unealthy';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "#660099";
       cityqual.textContent =
         "Health warnings of emergency conditions. The entire population is more likely to be affected.";
-    } else if (json.data.aqi > 300) {
+    } else if (json3.data.aqi > 300) {
+      citySearchvoteh3.textContent='';
+      citySearchvoteh3.textContent='Hazardous';
+      citySearchDiv.style.border='';
+      citySearchDiv.style.border='0.5px solid white';
       backgroundRes.style.backgroundColor = "";
       backgroundRes.style.backgroundColor = "#7e0023";
       cityqual.textContent =
         "	Health alert: everyone may experience more serious health effects.";
-    } else if ((json.data.aqi = "error")) {
+    } else if ((json3.data.aqi = "error")) {
       backgroundRes.style.backgroundColor = "";
     }
   }
@@ -148,6 +208,24 @@ window.onload = function () {
   console.log(submitLatLon);
   submitLatLon.addEventListener("click", () => latlonSearch());
   async function latlonSearch() {
+    let mainlatlon= document.querySelector('.main');
+    // let overlay= document.createElement('div');
+    // overlay.classList.add('overlay');
+    // console.log(overlay);
+    // overlay.appendChild(mainlatlon);
+    var bar = new Circle('#progressbar', {
+      strokeWidth: 6,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#FFEA82',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: null
+    });
+    let progressbar= document.querySelector('#progressbar');
+    progressbar.classList.add('active');
+    
+    bar.animate(1.0);
     const inputLanCity = document.querySelector("input#latitude");
     console.log(inputLanCity.value);
     const inputLonCity = document.querySelector("input#longitude");
@@ -159,8 +237,16 @@ window.onload = function () {
     const latlonqual = document.getElementById("qual");
     latlonqual.textContent = "";
     const backgroundRes2= document.querySelector('div#latlonres.result');
-    let divlatlonvote= document.querySelector('#divlatlonvote');
+    backgroundRes2.style.backgroundColor='';
+    let divlatlonvote= document.querySelector('div#divlatlonvote');
+
+    divlatlonvote.style.border='';
+    let errorgeo=document.querySelector('#errorgeo');
+    errorgeo.textContent='';
+    errorgeo.style.color='';
     let latlonvoteh3= document.querySelector('#latlonvoteh3');
+    console.log(latlonvoteh3);
+    latlonvoteh3.textContent='';
     if (json2.data.aqi <= 50) {
       latlonvoteh3.textContent='';
       latlonvoteh3.textContent='Good';
@@ -209,6 +295,15 @@ window.onload = function () {
       backgroundRes2.style.backgroundColor ="#7e0023";
       latlonqual.textContent =
         "	Health alert: everyone may experience more serious health effects.";
-    }
+      }
+      else if (json2.status == 'error') {
+        let errorgeo=document.querySelector('#errorgeo');
+        errorgeo.textContent='Insert valid geo position';
+        errorgeo.style.color='red';
+
+
+      }
+    progressbar.classList.remove('active');
+    progressbar.innerHTML='';
   }
 };
