@@ -63,9 +63,9 @@
   </head>
 
   <body>
-    <h1>Air Pollution</h1>
+    <h1><strong> Air Pollution </strong></h1>
     <h3 id="discover">
-      Discover Air Quality Index around the world. <br>
+     <strong> Discover Air Quality Index around the world.</strong> <br>
 Use one of the following search methods.
     </h3>
     
@@ -132,14 +132,22 @@ Use one of the following search methods.
                 <p class="pError"></p>
                 <button class="citySearch" type="button">search</button>
         </form>
+
         <div class="result">
+<div id="progressbargeo"></div>
           <div id="citySearchDiv">  
             <h3 id="citySearchvoteh3"></h3>
           </div>
           <h3 id="aqicit"></h3>
+        <div id='citystatss'>
             <h3 id="cityquality"></h3>
-            <h4 id="minecity"></h4>
-            <h4 id="aqicity"></h4>
+        </div>
+            <div id="citystats">
+
+              <img id="poscity" src="/assets/img/positionCity.png" alt="" srcset="">
+              <h4 id="minecity"></h4>
+              <h4 id="aqicity"></h4>
+            </div>
         </div>
         </div>
 
@@ -159,7 +167,6 @@ Use one of the following search methods.
                 placeholder="insert your latitude here"
               />
             </div>
-            <div id="progressbar"></div>
             <p id="lonp">longitude</p>
             <div id="inputtwo">
               <input
@@ -174,10 +181,17 @@ Use one of the following search methods.
               <button id="submitlatlon" type="submit" value="">search </button>
             </div>
             <div id= 'latlonres' class="result">
+              <div id="progressbar"></div>
               <div id="divlatlonvote">
                 <h3 id="latlonvoteh3"></h3>
               </div>
-              <h4 id="qual"></h4>
+              <h3 id="aqiCity"></h3>
+              <h3 id="qual"></h3>
+              <div id="citystats">
+
+                <img id="poslatlon" src="/assets/img/positionCity.png" alt="" srcset="">
+                <h4 id="minecitylatlon"></h4>
+              </div>
             </div>
           </div>
         </div>
@@ -191,13 +205,18 @@ Use one of the following search methods.
             <div id="gpsDivv">
 
               <button id="getgps">search my position</button>
+              <div id="progressbargps"></div>
               <div id="gpsDiv">
                 <div id="divVote">
                   <h3 id="vote"></h3>  
                 </div>
                 <h3 id="airquality"></h3>
-                <h4 id="mycity"></h4>
                 <h4 id="aqi"></h4>
+                <div>
+
+                  <img id="pos" src="/assets/img/position.png" alt="" srcset="">
+                  <h4 id="mycity"></h4>
+                </div>
               </div>
           </div>
         </div>

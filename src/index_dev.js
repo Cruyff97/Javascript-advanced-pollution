@@ -13,14 +13,27 @@ window.onload = function () {
   btngps.addEventListener("click", () => getgps());
   function getgps() {
     
+    
     navigator.geolocation.getCurrentPosition(async (position) => {
       var crd = position.coords;
 
       const lat = await `${crd.latitude}`;
       const lon = await ` ${crd.longitude}`;
+
       
 
-
+var bargps = new Circle('#progressbargps', {
+      strokeWidth: 6,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#C56824',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: null
+    });
+    bargps.animate(1.0);
+    let progressbargps= document.querySelector('#progressbargps');
+    progressbargps.classList.add('active');
       const api_url = `https://api.waqi.info/feed/geo:${crd.latitude};${crd.longitude}/?token=${process.env.API_KEY}`;
       const response = await fetch(api_url);
       const json = await response.json();
@@ -30,9 +43,16 @@ window.onload = function () {
       let vote=document.querySelector('#vote');
       vote.textContent='';
       let gpsDiv= document.querySelector('#gpsDiv');
+      gpsDiv.style.boxShadow='0 0 5px #8888';
       let voteDiv= document.querySelector('#divVote');
       voteDiv.style.border='';
       voteDiv.style.border= '1px solid white';
+      let imgpos= document.querySelector('img#pos');
+      imgpos.style.display='none';
+      imgpos.style.display='inline';
+      progressbargps.classList.add('active');
+      progressbargps.classList.remove('active');
+      progressbargps.innerHTML='';
       /*results*/
       if (json.data.aqi <= 50) {
         gpsDiv.style.backgroundColor= '';
@@ -93,6 +113,29 @@ window.onload = function () {
   citySearchh.addEventListener("click", () => citySearch());
   async function citySearch() {
     let inputSearch = document.querySelector("input#city");
+    if (inputSearch.value==''){
+      let inputSearch = document.querySelector("input#city");
+      let formcity= document.querySelector('#formcity');
+      let errorcity = document.querySelector('.pError');
+      errorcity.innerText='Insert a City name';
+      formcity.insertBefore(errorcity,citySearchh);
+      inputSearch.style.borderColor= 'red'; 
+      citySearchvoteh3.textContent='';
+      citySearchDiv.style.border='';
+return    }
+
+    var barp = new Circle('#progressbargeo', {
+      strokeWidth: 6,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#C56824',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: null
+    });
+    barp.animate(1.0);
+    let progressbargeo= document.querySelector('#progressbargeo');
+    progressbargeo.classList.add('active');
     console.log(inputSearch.value);
     console.log(citySearchh);
 
@@ -101,7 +144,10 @@ window.onload = function () {
     const url1 = "https://api.waqi.info/feed/";
     const city_url = url1 + city + token;
     console.log(city_url);
-    const response = await fetch(city_url);
+    const response = await fetch(city_url).catch(function(){
+    
+    });
+    
     const json3 = await response.json();
     const cityqual = document.getElementById("cityquality");
     cityqual.textContent = "";
@@ -118,29 +164,16 @@ window.onload = function () {
     let minecity = document.querySelector("#minecity");
     minecity.textContent='';
     backgroundRes.style.backgroundColor='';
-    
     if (json3.status!== 'error') {aqiStat.textContent= 'AQI:' + ' ' + await `${json3.data.aqi}`;
     let minecity = document.querySelector("#minecity");
     console.log(minecity);
     let cities = await `${json3.data.city}`;
     console.log(cities);
     minecity.textContent = await `${json3.data.city.name}`;
-
-  }
-  if(json3.status== 'error') {
-    console.log('cc');
-    let formcity= document.querySelector('#formcity');
-    let errorcity = document.querySelector('.pError');
-    errorcity.innerText='City not found';
-    
-  formcity.insertBefore(errorcity,citySearchh);
-   
-
-   inputSearch.style.borderColor= 'red'; 
-    citySearchvoteh3.textContent='';
-    citySearchDiv.style.border='';
-  }
-    if (json3.data.aqi <= 50) {
+    let imgposcity= document.querySelector('img#poscity');
+    imgposcity.style.display='none';
+    imgposcity.style.display='inline';
+     if (json3.data.aqi <= 50) {
       citySearchvoteh3.textContent='';
       citySearchvoteh3.textContent='Good';
       citySearchDiv.style.border='';
@@ -200,10 +233,38 @@ window.onload = function () {
       backgroundRes.style.backgroundColor = "#7e0023";
       cityqual.textContent =
         "	Health alert: everyone may experience more serious health effects.";
-    } else if ((json3.data.aqi = "error")) {
+    }
+
+  }
+   
+  
+
+  
+  if(json3.status== 'error') {
+    let imgposcity= document.querySelector('img#poscity');
+    imgposcity.style.display='none';
+
+    let formcity= document.querySelector('#formcity');
+    let errorcity = document.querySelector('.pError');
+    errorcity.innerText='City not found';
+    
+  formcity.insertBefore(errorcity,citySearchh);
+   
+
+   inputSearch.style.borderColor= 'red'; 
+    citySearchvoteh3.textContent='';
+    citySearchDiv.style.border='';
+  }
+     else if (json3.data.aqi == "error") {
       backgroundRes.style.backgroundColor = "";
     }
+    progressbargeo.classList.remove('active');
+    progressbargeo.innerHTML='';
   }
+ 
+  //latlon//
+  let imgposLatLon=document.querySelector('#poslatlon');
+  imgposLatLon.style.display='none';
   const submitLatLon = document.querySelector("button#submitlatlon");
   console.log(submitLatLon);
   submitLatLon.addEventListener("click", () => latlonSearch());
@@ -217,7 +278,7 @@ window.onload = function () {
       strokeWidth: 6,
       easing: 'easeInOut',
       duration: 1400,
-      color: '#FFEA82',
+      color: '#C56824',
       trailColor: '#eee',
       trailWidth: 1,
       svgStyle: null
@@ -247,7 +308,25 @@ window.onload = function () {
     let latlonvoteh3= document.querySelector('#latlonvoteh3');
     console.log(latlonvoteh3);
     latlonvoteh3.textContent='';
-    if (json2.data.aqi <= 50) {
+    let minecitylatlon = document.querySelector("#minecitylatlon");
+    minecitylatlon.textContent='';
+    let imgposLatLon=document.querySelector('#poslatlon');
+    imgposLatLon.style.display='none';
+    let aqiStatGeo= document.querySelector('h3#aqiCity');
+      aqiStatGeo.textContent='';
+    if (inputLanCity.value=='' ){
+      let errorgeo=document.querySelector('#errorgeo');
+      errorgeo.textContent='Insert valid geo position';
+      errorgeo.style.color='red';
+     }
+     if(json2.status!=='error'){
+      let imgposLatLon= document.getElementById('poslatlon');
+      imgposLatLon.style.display='inline';
+      let citylatlon = document.getElementById("minecitylatlon");
+      citylatlon.textContent = await `${json2.data.city.name}`;
+let aqiStatGeo= document.querySelector('h3#aqiCity');
+      aqiStatGeo.textContent= 'AQI:' + ' ' + await `${json2.data.aqi}`;
+      if (json2.data.aqi <= 50) {
       latlonvoteh3.textContent='';
       latlonvoteh3.textContent='Good';
       divlatlonvote.style.border='';
@@ -295,15 +374,17 @@ window.onload = function () {
       backgroundRes2.style.backgroundColor ="#7e0023";
       latlonqual.textContent =
         "	Health alert: everyone may experience more serious health effects.";
-      }
+      }}
       else if (json2.status == 'error') {
         let errorgeo=document.querySelector('#errorgeo');
         errorgeo.textContent='Insert valid geo position';
         errorgeo.style.color='red';
-
+        
 
       }
-    progressbar.classList.remove('active');
-    progressbar.innerHTML='';
-  }
+    
+  
+  progressbar.classList.remove('active');
+  progressbar.innerHTML='';
+}
 };
