@@ -35,7 +35,7 @@ window.onload = function () {
       const json = await response.json();
       const quality = document.getElementById("airquality");
       quality.textContent = "";
-      console.log(json);
+      
       let vote = document.querySelector("#vote");
       vote.textContent = "";
       let gpsDiv = document.querySelector("#gpsDiv");
@@ -156,7 +156,7 @@ window.onload = function () {
     const city = inputSearch.value + "/";
     const url1 = "https://api.waqi.info/feed/";
     const city_url = url1 + city + token;
-    console.log(city_url);
+    
     const response = await fetch(city_url).catch(function () {});
 
     const json3 = await response.json();
@@ -300,7 +300,7 @@ window.onload = function () {
     const latlon_url = `https://api.waqi.info/feed/geo:${inputLanCity.value};${inputLonCity.value}/?token=${process.env.API_KEY}`;
     const response2 = await fetch(latlon_url);
     const json2 = await response2.json();
-    console.log(json2);
+   
     const latlonqual = document.getElementById("qual");
     latlonqual.textContent = "";
     const backgroundRes2 = document.querySelector("div#latlonres.result");
