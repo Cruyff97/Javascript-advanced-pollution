@@ -338,7 +338,7 @@ h4#minecitylatlon {
     margin-bottom: 10px;
   }
   .main {
-    display: inline-table;
+    display: table;
   }
   #geolocalization {
     margin: 0px;
