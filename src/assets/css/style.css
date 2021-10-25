@@ -341,6 +341,6 @@ h4#minecitylatlon {
     display: table;
   }
   #geolocalization {
-    margin: 0px;
+    margin: 10px;
 }
 }
