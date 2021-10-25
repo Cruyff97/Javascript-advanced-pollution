@@ -48,6 +48,8 @@ body {
   justify-content: center;
 }
 .main {
+    display: table;
+    inline-size: -webkit-fill-available;
   border-radius: 10px;
   box-shadow: 0px 12px 10px 9px #8888;
   max-width: 700px;
