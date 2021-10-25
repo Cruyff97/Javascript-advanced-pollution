@@ -300,7 +300,7 @@ window.onload = function () {
     const latlon_url = `https://api.waqi.info/feed/geo:${inputLanCity.value};${inputLonCity.value}/?token=${process.env.API_KEY}`;
     const response2 = await fetch(latlon_url);
     const json2 = await response2.json();
-   
+   console.log(json2);
     const latlonqual = document.getElementById("qual");
     latlonqual.textContent = "";
     const backgroundRes2 = document.querySelector("div#latlonres.result");
