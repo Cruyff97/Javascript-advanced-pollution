@@ -6,95 +6,94 @@
 /*GPS*/
 import { Circle } from 'progressbar.js';
 window.onload = function () {
- 
-
-  let btngps = document.querySelector("button#getgps");
-  console.log(btngps);
-  btngps.addEventListener("click", () => getgps());
-  function getgps() {
+  
+    let btngps = document.querySelector("button#getgps");
     
-    
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      var crd = position.coords;
-
-      const lat = await `${crd.latitude}`;
-      const lon = await ` ${crd.longitude}`;
-
+    btngps.addEventListener("click", () => getgps());
+    function getgps() {
       
-
-var bargps = new Circle('#progressbargps', {
-      strokeWidth: 6,
-      easing: 'easeInOut',
-      duration: 1400,
-      color: '#C56824',
-      trailColor: '#eee',
-      trailWidth: 1,
-      svgStyle: null
-    });
-    bargps.animate(1.0);
-    let progressbargps= document.querySelector('#progressbargps');
-    progressbargps.classList.add('active');
-      const api_url = `https://api.waqi.info/feed/geo:${crd.latitude};${crd.longitude}/?token=${process.env.API_KEY}`;
-      const response = await fetch(api_url);
-      const json = await response.json();
-      const quality = document.getElementById("airquality");
-      quality.textContent = "";
-      console.log(json);
-      let vote=document.querySelector('#vote');
-      vote.textContent='';
-      let gpsDiv= document.querySelector('#gpsDiv');
-      gpsDiv.style.boxShadow='0 0 5px #8888';
-      let voteDiv= document.querySelector('#divVote');
-      voteDiv.style.border='';
-      voteDiv.style.border= '1px solid white';
-      let imgpos= document.querySelector('img#pos');
-      imgpos.style.display='none';
-      imgpos.style.display='inline';
-      progressbargps.classList.add('active');
-      progressbargps.classList.remove('active');
-      progressbargps.innerHTML='';
-      /*results*/
-      if (json.data.aqi <= 50) {
-        gpsDiv.style.backgroundColor= '';
-        gpsDiv.style.backgroundColor= 'green';
-        vote.textContent='Good'
-        quality.textContent =
+      
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        var crd = position.coords;
+        
+        const lat = await `${crd.latitude}`;
+        const lon = await ` ${crd.longitude}`;
+        
+        
+        
+        var bargps = new Circle('#progressbargps', {
+          strokeWidth: 6,
+          easing: 'easeInOut',
+          duration: 1400,
+          color: '#C56824',
+          trailColor: '#eee',
+          trailWidth: 1,
+          svgStyle: null
+        });
+        bargps.animate(1.0);
+        let progressbargps= document.querySelector('#progressbargps');
+        progressbargps.classList.add('active');
+        const api_url = `https://api.waqi.info/feed/geo:${crd.latitude};${crd.longitude}/?token=${process.env.API_KEY}`;
+        const response = await fetch(api_url);
+        const json = await response.json();
+        const quality = document.getElementById("airquality");
+        quality.textContent = "";
+        console.log(json);
+        let vote=document.querySelector('#vote');
+        vote.textContent='';
+        let gpsDiv= document.querySelector('#gpsDiv');
+        gpsDiv.style.boxShadow='0 0 5px #8888';
+        let voteDiv= document.querySelector('#divVote');
+        voteDiv.style.border='';
+        voteDiv.style.border= '1px solid white';
+        let imgpos= document.querySelector('img#pos');
+        imgpos.style.display='none';
+        imgpos.style.display='inline';
+        progressbargps.classList.add('active');
+        progressbargps.classList.remove('active');
+        progressbargps.innerHTML='';
+        /*results*/
+        if (json.data.aqi <= 50) {
+          gpsDiv.style.backgroundColor= '';
+          gpsDiv.style.backgroundColor= 'green';
+          vote.textContent='Good'
+          quality.textContent =
           "Air quality is considered satisfactory, and air pollution poses little or no risk";
-       
-      } else if (json.data.aqi <= 100) {
-        gpsDiv.style.backgroundColor= '';
-        gpsDiv.style.backgroundColor= "#ffde33";
-        vote.textContent='Moderate'
-        quality.textContent =
+          
+        } else if (json.data.aqi <= 100) {
+          gpsDiv.style.backgroundColor= '';
+          gpsDiv.style.backgroundColor= "#ffde33";
+          vote.textContent='Moderate'
+          quality.textContent =
           "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-        
-      } else if (json.data.aqi <= 150) {
-        gpsDiv.style.backgroundColor= '';
-        gpsDiv.style.backgroundColor= '#ff9933';
-        vote.textContent='Unhealthy for Sensitive Groups';
-        quality.textContent =
+          
+        } else if (json.data.aqi <= 150) {
+          gpsDiv.style.backgroundColor= '';
+          gpsDiv.style.backgroundColor= '#ff9933';
+          vote.textContent='Unhealthy for Sensitive Groups';
+          quality.textContent =
           "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
-        
-      } else if (json.data.aqi <= 200) {
-        gpsDiv.style.backgroundColor= '';
-        gpsDiv.style.backgroundColor= '#cc0033';
-        vote.textContent='Unhealthy';
-        quality.textContent =
+          
+        } else if (json.data.aqi <= 200) {
+          gpsDiv.style.backgroundColor= '';
+          gpsDiv.style.backgroundColor= '#cc0033';
+          vote.textContent='Unhealthy';
+          quality.textContent =
           "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
-       
+          
       } else if (json.data.aqi <= 300) {
         gpsDiv.style.backgroundColor= '';
         gpsDiv.style.backgroundColor= '#660099';
         vote.textContent='Very Unhealthy';
         quality.textContent =
-          "Health warnings of emergency conditions. The entire population is more likely to be affected.";
+        "Health warnings of emergency conditions. The entire population is more likely to be affected.";
         
       } else if (json.data.aqi > 300) {
         gpsDiv.style.backgroundColor= '';
         gpsDiv.style.backgroundColor= '#7e0023';
         vote.textContent='Hazardous';
         quality.textContent =
-          "	Health alert: everyone may experience more serious health effects.";
+        "	Health alert: everyone may experience more serious health effects.";
         
       }
       let city = document.getElementById("mycity");
@@ -104,6 +103,30 @@ var bargps = new Circle('#progressbargps', {
       console.log(city);
     });
   }
+  
+  //fix//
+    window.addEventListener("keypress", (e) =>
+    { var enter = e.keyCode || e.which;
+      var cityTab=document.getElementById('city');
+      var geolocalTab= document.getElementById('geolocal');
+      var gpsTab= document.getElementById('gps');
+
+      if(enter == 13 && cityTab.classList.contains('active') ) {
+        e.preventDefault();
+        citySearch()
+      }
+      
+      if(enter == 13 && geolocalTab.classList.contains('active')){
+        latlonSearch()
+        e.preventDefault;
+        
+      }
+      if(enter == 13 && gpsTab.classList.contains('active')){
+        getgps();
+        e.preventDefault;
+        
+      }
+    })
 
   /*CITY*/
   /*handling errors*/
