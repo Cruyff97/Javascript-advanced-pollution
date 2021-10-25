@@ -1,4 +1,4 @@
 [build]
   functions = "./netlify/functions"
   [context.production]
-  environment = { API_KEY=dcea96088aa8fcf31c0694940d111cf32367ad81}
+  environment = { API_KEY="dcea96088aa8fcf31c0694940d111cf32367ad81"}
