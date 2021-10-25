@@ -1,7 +1,7 @@
-/*progressbar*/
 
 
-/*catch errors*/
+
+
 
 /*GPS*/
 import { Circle } from 'progressbar.js';
