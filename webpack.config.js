@@ -36,7 +36,7 @@
           template: path.resolve(__dirname, './src/index.html'),
         }),
         // Qui dotenv-webpack viene inizializzato
-        //new Dotenv(),
+        new Dotenv(),
 
         new CopyPlugin({
           patterns: [
