@@ -1,2 +1,4 @@
 [build]
   functions = "./netlify/functions"
+  [context.production]
+  environment = { ACCESS_TOKEN = "super secret"}
