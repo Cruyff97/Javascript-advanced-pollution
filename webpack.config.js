@@ -6,6 +6,7 @@
   const path = require('path')
 
   const CopyPlugin = require("copy-webpack-plugin");
+  const api_key = process.env.api_key;
 
   // Per permettere a WebPack di utilizzare gli argomenti il modulo deve essere una funzione (normalmente è un oggetto)
   module.exports = (env, argv) => {
