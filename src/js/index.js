@@ -126,6 +126,7 @@ window.onload = function () {
   console.log(citySearchh);
   citySearchh.addEventListener("click", () => citySearch());
   async function citySearch() {
+    console.log(process.env.API_KEY);
     let inputSearch = document.querySelector("input#city");
     if (inputSearch.value == "") {
       let inputSearch = document.querySelector("input#city");
@@ -394,4 +395,3 @@ window.onload = function () {
     progressbar.innerHTML = "";
   }
 };
-console.log(process.env.API_KEY);
