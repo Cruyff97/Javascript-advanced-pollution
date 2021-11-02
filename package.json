@@ -28,11 +28,12 @@
     "style-loader": "^3.3.0",
     "webpack": "^5.26.3",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.4.0"
   },
   "dependencies": {
     "axios": "^0.22.0",
     "bootstrap": "^3.4.1",
+    "dotenv": "^10.0.0",
     "progressbar.js": "^1.1.0"
   }
 }

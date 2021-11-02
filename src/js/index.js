@@ -394,3 +394,4 @@ window.onload = function () {
     progressbar.innerHTML = "";
   }
 };
+console.log(process.env.API_KEY);
