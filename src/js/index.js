@@ -1,4 +1,4 @@
-require ('dotenv').config();
+
 //fix env & apykeys
 async function callLambdaFunction() {
   const response = await fetch("/.netlify/functions/lambda");

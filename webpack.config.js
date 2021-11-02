@@ -26,7 +26,7 @@
       },
       // Configurazione di un plugin, necessario per sveltire il processo di sviluppo vedi asterischi nello snippet successivo **
       devServer: {
-        contentBase: './build',
+        static: './build',
         open: true,
         hot:true
       },
