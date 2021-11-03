@@ -41,7 +41,7 @@
         }),
         // Qui dotenv-webpack viene inizializzato
         
-        //new Dotenv(),
+        new Dotenv(),
 
         new CopyPlugin({
           patterns: [
