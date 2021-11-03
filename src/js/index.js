@@ -33,7 +33,7 @@ window.onload = function () {
       bargps.animate(1.0);
       let progressbargps = document.querySelector("#progressbargps");
       progressbargps.classList.add("active");
-      const api_key= process.env.API_KEY
+      const api_key= process.env.API_KEY_CT
       const api_url = `https://api.waqi.info/feed/geo:${crd.latitude};${crd.longitude}/?token=${api_key}`;
       const response = await fetch(api_url);
       const json = await response.json();
@@ -128,7 +128,7 @@ window.onload = function () {
   console.log(citySearchh);
   citySearchh.addEventListener("click", () => citySearch());
   async function citySearch() {
-    console.log(process.env.API_KEY);
+    console.log(process.env.API_KEY_CT);
     let inputSearch = document.querySelector("input#city");
     if (inputSearch.value == "") {
       let inputSearch = document.querySelector("input#city");
@@ -156,7 +156,7 @@ window.onload = function () {
     progressbargeo.classList.add("active");
     console.log(inputSearch.value);
     console.log(citySearchh);
-    const api_key= process.env.API_KEY
+    const api_key= process.env.API_KEY_CT
     const token = "?token=" + `${api_key}`;
     const city = inputSearch.value + "/";
     const url1 = "https://api.waqi.info/feed/";
@@ -302,7 +302,7 @@ window.onload = function () {
     console.log(inputLanCity.value);
     const inputLonCity = document.querySelector("input#longitude");
     console.log(inputLonCity.value);
-    const api_key= process.env.API_KEY;
+    const api_key= process.env.API_KEY_CT;
     const latlon_url = `https://api.waqi.info/feed/geo:${inputLanCity.value};${inputLonCity.value}/?token=${api_key}`;
     const response2 = await fetch(latlon_url);
     const json2 = await response2.json();
