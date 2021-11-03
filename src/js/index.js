@@ -128,7 +128,7 @@ window.onload = function () {
   console.log(citySearchh);
   citySearchh.addEventListener("click", () => citySearch());
   async function citySearch() {
-    console.log(process.env.API_KEY_CT);
+  
     let inputSearch = document.querySelector("input#city");
     if (inputSearch.value == "") {
       let inputSearch = document.querySelector("input#city");
