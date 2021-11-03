@@ -35,6 +35,7 @@
     "bootstrap": "^3.4.1",
     "dotenv": "^10.0.0",
     "node": "^17.0.1",
-    "progressbar.js": "^1.1.0"
+    "progressbar.js": "^1.1.0",
+    "util": "^0.12.4"
   }
 }

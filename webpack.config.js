@@ -24,9 +24,10 @@
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'build')
       },
+      
       // Configurazione di un plugin, necessario per sveltire il processo di sviluppo vedi asterischi nello snippet successivo **
       devServer: {
-        static: './build',
+        contentBase: './build',
         open: true,
         hot:true
       },

@@ -1,3 +1,5 @@
+const dotenv= require("dotenv-webpack").config();
+console.log(process.env);
 
 //fix env & apykeys
 async function callLambdaFunction() {
