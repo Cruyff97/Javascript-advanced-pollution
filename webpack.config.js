@@ -7,14 +7,16 @@
 
   const CopyPlugin = require("copy-webpack-plugin");
   const api_key = process.env.api_key;
-
+  
   // Per permettere a WebPack di utilizzare gli argomenti il modulo deve essere una funzione (normalmente è un oggetto)
   module.exports = (env, argv) => {
+    
     // FONDAMENTALE! Definiamo il file da utilizzare in base all'ambiente
     // Se WebPack vede che siamo in sviluppo andrà ad utilizzare './src/index_dev.js'
     // Se invece saremo in produzione utilizzerà './src/index.js'
     const entryPath = './src/js/index.js'
     return {
+        
       entry: {
         // Qui specifichiamo il file di ENTRATA, vedi commento sopra
         main: path.resolve(__dirname, entryPath),
