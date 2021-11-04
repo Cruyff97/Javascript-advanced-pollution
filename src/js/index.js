@@ -167,7 +167,6 @@ window.onload = function () {
     const json3 = await response.json();
     const cityqual = document.getElementById("cityquality");
     cityqual.textContent = "";
-    console.log(city_url);
     const backgroundRes = document.querySelector(".result");
     const citySearchvoteh3 = document.querySelector("#citySearchvoteh3");
     const citySearchDiv = document.querySelector("#citySearchDiv");
